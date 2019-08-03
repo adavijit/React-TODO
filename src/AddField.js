@@ -2,21 +2,24 @@ import React , {Component} from 'react';
 import './App.css';
 class AddField extends Component{
 state = {
-    text : ''
+    text: ""
 }
- handleAdd = () =>{
-    this.setState({
-        text : document.getElementById('myInput').value
-    });
+ handleAdd = async e =>{
+    await this.setState({[e.target.name]: e.target.value});
     console.log(this.state.text);
-
 }
+
+handleSubmit = e => {
+    e.preventDefault();
+    this.props.addTodo(this.state.text);
+}
+
 render(){
     return(
         <div id="myDIV" className="header">
         <h2>TO DO</h2>
-        <input type="text" id="myInput" placeholder="Title..."/>
-        <span onClick={this.handleAdd} className="addBtn">Add</span>
+        <input type="text" id="myInput" name="text" placeholder="Title..." value={this.state.text} onChange={this.handleAdd}/>
+        <button onClick={this.handleSubmit}>Add</button>
         </div>
     );
 }

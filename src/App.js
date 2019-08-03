@@ -1,19 +1,13 @@
 import React from 'react';
-import AddField from './AddField';
+import MainComponent from './MainComponent';
 
 
  let App = () => {
+  
   return (
    
       
-<div>
-
-<AddField/>
-
-<ul id="myUL">
- 
-</ul>
-</div>
+<MainComponent/>
    
   );
 }
