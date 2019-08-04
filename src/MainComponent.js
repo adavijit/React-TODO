@@ -8,6 +8,7 @@ import List from "./List";
     state = {
         todos: []
     }
+    
     addTodo = newTodo => {
         this.setState({todos: [...this.state.todos, newTodo]})
     }
