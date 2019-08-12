@@ -6,11 +6,13 @@ state = {
 }
  handleAdd = async e =>{
     await this.setState({[e.target.name]: e.target.value});
+
     console.log(this.state.text);
 }
 
 handleSubmit = e => {
     e.preventDefault();
+     this.setState({text: ''});
     this.props.addTodo(this.state.text);
 }
 

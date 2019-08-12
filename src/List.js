@@ -15,7 +15,7 @@ toggleBox = () => {
                     {this.props.todos.map((todo, index) => (
                         <li onClick={this.toggleBox} className={isBoxVisible ? "checked" : ""} key={index}>{todo}</li>
                     ))}
-                    {!this.state.textDisplay}
+                    
                 </ul>
            
         )
