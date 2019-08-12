@@ -19,7 +19,7 @@ render(){
         <div id="myDIV" className="header">
         <h2>TO DO</h2>
         <input type="text" id="myInput" name="text" placeholder="Title..." value={this.state.text} onChange={this.handleAdd}/>
-        <span onClick={this.handleSubmit} class="addBtn">Add</span>
+        <span onClick={this.handleSubmit} className="addBtn">Add</span>
 
         </div>
     );
