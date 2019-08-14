@@ -1,23 +1,26 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 export default class List extends Component {
-state={
-    isBoxVisible:false
-}
-toggleBox = () => {
-    this.setState(prevState => ({ isBoxVisible: !prevState.isBoxVisible }));
-  };
+	state = {
+		isBoxVisible: false
+	};
 
+	toggleBox = id => {
+		this.props.toggleChecked(id);
+	};
 
-    render() {
-        const { isBoxVisible } = this.state;
-        return(
-                <ul id="myUL">
-                    {this.props.todos.map((todo, index) => (
-                        <li onClick={this.toggleBox} className={isBoxVisible ? "checked" : ""} key={index}>{todo}</li>
-                    ))}
-                    
-                </ul>
-           
-        )
-    }
+	render() {
+		return (
+			<ul id="myUL">
+				{this.props.todos.map((todo, index) => (
+					<li
+						onClick={() => this.toggleBox(todo.id)}
+						className={todo.checked ? "checked" : ""}
+						key={index}
+					>
+						{todo.description}
+					</li>
+				))}
+			</ul>
+		);
+	}
 }

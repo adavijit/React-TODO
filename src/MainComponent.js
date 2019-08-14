@@ -1,31 +1,34 @@
-import React from 'react';
-import AddField from './AddField';
+import React from "react";
+import AddField from "./AddField";
 import List from "./List";
 
+class MainComponent extends React.Component {
+	state = {
+		todos: []
+	};
 
- class MainComponent extends React.Component{
+	addTodo = newTodo => {
+		this.setState({ todos: [...this.state.todos, newTodo] });
+	};
 
-    state = {
-        todos: []
-    }
-    
-    addTodo = newTodo => {
-        this.setState({todos: [...this.state.todos, newTodo]})
-    }
-  
-  render () {
-    return (
-   
-      
-        <div>
-        
-        <AddField addTodo={this.addTodo}/>
-        <List todos={this.state.todos} />
-        
-        </div>
-           
-    );
-  }
+	toggleChecked = id => {
+		let newTodos = this.state.todos.map(todo =>
+			todo.id === id ? { ...todo, checked: !todo.checked } : todo
+		);
+		this.setState({ todos: newTodos });
+	};
+
+	render() {
+		return (
+			<div>
+				<AddField addTodo={this.addTodo} />
+				<List
+					todos={this.state.todos}
+					toggleChecked={this.toggleChecked}
+				/>
+			</div>
+		);
+	}
 }
 
 export default MainComponent;
